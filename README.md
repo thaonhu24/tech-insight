@@ -72,9 +72,9 @@ The project follows a feature-based structure to ensure scalability and separati
 
 ## ✅ Phase 1 – Core Rendering
 
-- [ ] Project setup with Next.js 14
-- [ ] Layout & Navbar
-- [ ] Home page (SSG)
+- [x] Project setup with Next.js 14
+- [x] Layout & Navbar
+- [x] Home page (SSG)
 - [ ] Posts page (SSR)
 - [ ] Post detail page (ISR)
 
