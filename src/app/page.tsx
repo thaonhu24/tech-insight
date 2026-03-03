@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <section className="space-y-20">
+    <section className="space-y-20 max-w-4xl mx-auto">
       {/* HERO */}
       <div className="space-y-6">
         <h1 className="text-5xl font-bold leading-tight">Tech Insight</h1>
