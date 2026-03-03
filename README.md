@@ -75,7 +75,7 @@ The project follows a feature-based structure to ensure scalability and separati
 - [x] Project setup with Next.js 14
 - [x] Layout & Navbar
 - [x] Home page (SSG)
-- [ ] Posts page (SSR)
+- [x] Posts page (ISR)
 - [ ] Post detail page (ISR)
 
 ---
