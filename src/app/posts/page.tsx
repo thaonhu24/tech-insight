@@ -1,23 +1,25 @@
+import { PostList } from "@/features/posts/components";
 import { getPosts } from "@/features/posts/post.service";
-import { BlogList } from "@/features/posts/components";
+import { IPaginationParams } from "@/types";
 
-export default async function BlogPage() {
-  const posts = await getPosts();
+type Props = {
+  searchParams: Promise<{
+    q?: string;
+    page?: string;
+  }>;
+};
 
-  return (
-    <main className="min-h-screen bg-gray-50">
-      <div className="mx-auto max-w-6xl px-6 py-16">
-        <div className="mb-16 text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-            Tech Insights
-          </h1>
-          <p className="mt-4 text-lg text-gray-600">
-            Thoughts, tutorials and ideas about modern web development.
-          </p>
-        </div>
+export default async function Page({ searchParams }: Props) {
+  const { q, page: pageParam } = await searchParams;
 
-        <BlogList posts={posts} />
-      </div>
-    </main>
-  );
+  const page = Number(pageParam) || 1;
+  const query = q || "";
+  const response = await getPosts({ query, page, limit: 6 });
+  const param: IPaginationParams = {
+    totalCount: response?.totalCount ?? 0,
+    page: response?.page ?? 1,
+    pageSize: response?.pageSize ?? 6,
+  };
+
+  return <PostList posts={response?.data || []} param={param} />;
 }
