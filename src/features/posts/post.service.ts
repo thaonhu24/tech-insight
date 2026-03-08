@@ -64,3 +64,23 @@ export async function getPosts(
     return undefined;
   }
 }
+
+export async function getPostById(id: string) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/${id}`,
+      {
+        cache: "no-store",
+      },
+    );
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch post");
+    }
+
+    return res.json();
+  } catch (error) {
+    console.error("Error fetching post by ID:", error);
+    throw error;
+  }
+}

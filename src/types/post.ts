@@ -12,6 +12,21 @@ export type Post = {
   image: string;
 };
 
+export type TReaction = {
+  likes: number;
+  dislikes: number;
+};
+
+export type PostDetail = {
+  id: string;
+  title: string;
+  body: string;
+  tags: string[];
+  reactions: TReaction;
+  views: number;
+  userId: number;
+};
+
 export interface IPostsParams {
   query?: string;
   page?: number;
