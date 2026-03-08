@@ -1,4 +1,6 @@
 import Image from "next/image";
+
+// *INFO: internal modules
 import { getPostById } from "@/features/posts/post.service";
 import {
   PostMeta,
@@ -17,7 +19,6 @@ export default async function PostDetailPage({
 
   return (
     <article className="max-w-3xl mx-auto px-4 py-10">
-      {/* Hero image */}
       <Image
         src={`https://picsum.photos/seed/${post.id}/900/450`}
         alt={post.title}

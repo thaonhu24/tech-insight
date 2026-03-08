@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
+import { getPageNumbers } from "./method";
 
 type Props = {
   currentPage: number;
@@ -13,34 +14,17 @@ export default function Pagination({ currentPage, total, limit }: Props) {
   const searchParams = useSearchParams();
   const totalPages = Math.ceil(total / limit);
 
+  const pageNumbers = getPageNumbers({ currentPage, totalPages });
+
   function goToPage(page: number) {
     const params = new URLSearchParams(searchParams);
     params.set("page", page.toString());
     router.push(`?${params.toString()}`);
   }
 
-  function getPageNumbers(): (number | "...")[] {
-    if (totalPages <= 7)
-      return Array.from({ length: totalPages }, (_, i) => i + 1);
-
-    const pages: (number | "...")[] = [1];
-    if (currentPage > 3) pages.push("...");
-    for (
-      let i = Math.max(2, currentPage - 1);
-      i <= Math.min(totalPages - 1, currentPage + 1);
-      i++
-    ) {
-      pages.push(i);
-    }
-    if (currentPage < totalPages - 2) pages.push("...");
-    pages.push(totalPages);
-
-    return pages;
-  }
-
   return (
     <div className="flex items-center gap-1">
-      {getPageNumbers().map((page, i) =>
+      {pageNumbers.map((page, i) =>
         page === "..." ? (
           <span
             key={`ellipsis-${i}`}

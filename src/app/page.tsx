@@ -1,7 +1,6 @@
 export default function HomePage() {
   return (
     <section className="space-y-20 max-w-4xl mx-auto">
-      {/* HERO */}
       <div className="space-y-6">
         <h1 className="text-5xl font-bold leading-tight">Tech Insight</h1>
 
@@ -21,7 +20,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* PROJECT GOAL */}
       <div className="space-y-4">
         <h2 className="text-2xl font-semibold">Project Goal</h2>
 
@@ -32,7 +30,6 @@ export default function HomePage() {
         </p>
       </div>
 
-      {/* RENDERING STRATEGY PREVIEW */}
       <div className="space-y-6">
         <h2 className="text-2xl font-semibold">Rendering Strategy</h2>
 
@@ -60,7 +57,6 @@ export default function HomePage() {
         </div>
       </div>
 
-      {/* TECH STACK */}
       <div className="space-y-6">
         <h2 className="text-2xl font-semibold">Tech Stack</h2>
 
