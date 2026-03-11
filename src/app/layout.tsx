@@ -1,3 +1,4 @@
+import { ReduxProvider } from "@/providers";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 
@@ -9,8 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-50 text-gray-900 antialiased">
-        <Navbar />
-        <main className="mx-auto px-6 py-10">{children}</main>
+        <ReduxProvider>
+          <Navbar />
+          <main className="mx-auto px-6 py-10">{children}</main>
+        </ReduxProvider>
       </body>
     </html>
   );

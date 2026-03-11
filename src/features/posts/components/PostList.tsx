@@ -3,6 +3,7 @@
 import { IPaginationParams, Post } from "@/types";
 import PostCard from "./PostCard";
 import { Pagination, SearchInput } from "@/components";
+import { PostActionProvider } from "@/context/postAction/PostActionContext";
 
 interface Props {
   posts: Post[];
@@ -18,9 +19,11 @@ export default function PostList({ posts, param }: Props) {
       </div>
 
       <div className="grid gap-6 md:grid-cols-3">
-        {posts.map((post) => (
-          <PostCard key={post.id} post={post} />
-        ))}
+        <PostActionProvider>
+          {posts.map((post) => (
+            <PostCard key={post.id} post={post} />
+          ))}
+        </PostActionProvider>
       </div>
 
       <div className="flex gap-2 justify-center mt-8">
