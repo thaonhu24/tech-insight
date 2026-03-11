@@ -1,10 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import bookmarkReducer from "./features/bookmarkSlice";
+
 import likeReducer from "./features/likeSlice";
 
 export const store = configureStore({
   reducer: {
-    bookmark: bookmarkReducer,
     like: likeReducer,
   },
 });
