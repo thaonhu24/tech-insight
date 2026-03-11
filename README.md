@@ -80,16 +80,26 @@ The project follows a feature-based structure to ensure scalability and separati
 
 ---
 
-## 🔄 Phase 2 – Global State (Redux Toolkit)
+## 🔄 Phase 2 – Context & useReducer
 
-- [ ] Configure Redux store
-- [ ] Implement bookmark feature
-- [ ] Create bookmarks page
-- [ ] Optimize re-renders using memoization
+- [x] Create PostContext provider
+- [x] Implement like feature
+- [x] Implement bookmark feature
+- [x] Persist state using localStorage
 
 ---
 
-## 🔄 Phase 3 – Forms & Validation
+## 🔄 Phase 3 – Global State (Redux Toolkit)
+
+- [ ] Configure Redux store
+- [ ] Create auth slice
+- [ ] Simulate login
+- [ ] Store user profile
+- [ ] Protect create post page
+
+---
+
+## 🔄 Phase 4 – Forms & Validation
 
 - [ ] Create post page
 - [ ] Integrate React Hook Form
@@ -98,7 +108,7 @@ The project follows a feature-based structure to ensure scalability and separati
 
 ---
 
-## 🔄 Phase 4 – Optimization & Polish
+## 🔄 Phase 5 – Optimization & Polish
 
 - [ ] Improve UI consistency
 - [ ] Add loading states
@@ -106,6 +116,13 @@ The project follows a feature-based structure to ensure scalability and separati
 - [ ] Improve performance awareness
 - [ ] Clean architecture refactor
 - [ ] Deploy to Vercel
+
+🔄 Phase 6 – UX Enhancements
+
+- [ ] Loading skeleton
+- [ ] Empty state UI
+- [ ] Error handling
+- [ ] Optimistic UI for likes
 
 ---
 
