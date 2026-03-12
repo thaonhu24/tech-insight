@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import likeReducer from "./features/likeSlice";
+import authReducer from "./slices/authSlice";
 
 export const store = configureStore({
   reducer: {
-    like: likeReducer,
+    auth: authReducer,
   },
 });
 
