@@ -91,11 +91,11 @@ The project follows a feature-based structure to ensure scalability and separati
 
 ## 🔄 Phase 3 – Global State (Redux Toolkit)
 
-- [ ] Configure Redux store
-- [ ] Create auth slice
-- [ ] Simulate login
-- [ ] Store user profile
-- [ ] Protect create post page
+- [x] Configure Redux store
+- [x] Create auth slice
+- [x] implement login with hook form
+- [x] Store user profile
+- [x] Protect create post page
 
 ---
 
