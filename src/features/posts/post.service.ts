@@ -67,12 +67,9 @@ export async function getPosts(
 
 export async function getPostById(id: string) {
   try {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/posts/${id}`,
-      {
-        cache: "no-store",
-      },
-    );
+    const res = await fetch(`${API_BASE_URL}/posts/${id}`, {
+      cache: "no-store",
+    });
 
     if (!res.ok) {
       throw new Error("Failed to fetch post");
