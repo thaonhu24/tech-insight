@@ -1,6 +1,6 @@
-import ReduxProvider from "@/store/provider";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
+import { AppProviders } from "@/providers/AppProviders";
 
 export default function RootLayout({
   children,
@@ -10,10 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-gray-50 text-gray-900 antialiased">
-        <ReduxProvider>
+        <AppProviders>
           <Navbar />
           <main className="mx-auto px-6 py-10">{children}</main>
-        </ReduxProvider>
+        </AppProviders>
       </body>
     </html>
   );
