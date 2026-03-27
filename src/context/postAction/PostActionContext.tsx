@@ -24,8 +24,8 @@ function getStoredArray(key: string): number[] {
 }
 function initState(): PostActionState {
   return {
-    likedPosts: getStoredArray("likedPosts"),
-    bookmarkedPosts: getStoredArray("bookmarkedPosts"),
+    likedPosts: [],
+    bookmarkedPosts: [],
   };
 }
 
@@ -41,6 +41,18 @@ export function PostActionProvider({
   const [state, dispatch] = useReducer(postActionReducer, undefined, initState);
 
   useEffect(() => {
+    const likedPosts = getStoredArray("likedPosts");
+    const bookmarkedPosts = getStoredArray("bookmarkedPosts");
+    dispatch({
+      type: EPostActionType.INIT_FROM_STORAGE,
+      payload: {
+        likedPosts,
+        bookmarkedPosts,
+      },
+    });
+  }, []);
+
+  useEffect(() => {
     localStorage.setItem("likedPosts", JSON.stringify(state.likedPosts));
   }, [state.likedPosts]);
 
@@ -52,12 +64,14 @@ export function PostActionProvider({
   }, [state.bookmarkedPosts]);
 
   const toggleLike = useCallback(
-    (id: number) => dispatch({ type: EPostActionType.TOGGLE_LIKE, id }),
+    (id: number) =>
+      dispatch({ type: EPostActionType.TOGGLE_LIKE, payload: id }),
     [],
   );
 
   const toggleBookmark = useCallback(
-    (id: number) => dispatch({ type: EPostActionType.TOGGLE_BOOKMARK, id }),
+    (id: number) =>
+      dispatch({ type: EPostActionType.TOGGLE_BOOKMARK, payload: id }),
     [],
   );
 

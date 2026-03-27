@@ -30,7 +30,7 @@ export async function getPosts(
       fetch(
         `${API_BASE_URL}/posts/search?q=${query}&limit=${limit}&skip=${skip}`,
         {
-          cache: "no-store",
+          next: { revalidate: 60 },
         },
       ),
       fetch(`${API_IMAGE_URL}/?_limit=${POST_LIMIT}`, {

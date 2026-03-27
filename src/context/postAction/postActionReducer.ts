@@ -9,12 +9,17 @@ export function postActionReducer(
   action: PostActionAction,
 ): PostActionState {
   switch (action.type) {
+    case EPostActionType.INIT_FROM_STORAGE:
+      return {
+        ...state,
+        ...action.payload,
+      };
     case EPostActionType.TOGGLE_LIKE:
-      return { ...state, likedPosts: toggle(state.likedPosts, action.id) };
+      return { ...state, likedPosts: toggle(state.likedPosts, action.payload) };
     case EPostActionType.TOGGLE_BOOKMARK:
       return {
         ...state,
-        bookmarkedPosts: toggle(state.bookmarkedPosts, action.id),
+        bookmarkedPosts: toggle(state.bookmarkedPosts, action.payload),
       };
   }
 }

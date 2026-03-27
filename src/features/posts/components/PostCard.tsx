@@ -33,6 +33,7 @@ export default function PostCard({ post }: Props) {
         alt={post.title}
         width={300}
         height={200}
+        loading="eager"
         className="w-full h-48 object-cover"
       />
 

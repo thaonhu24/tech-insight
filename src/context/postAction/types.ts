@@ -3,9 +3,17 @@ export type PostActionState = {
   bookmarkedPosts: number[];
 };
 
+export type ActionPayload = PostActionState & {
+  id?: number;
+};
+
 export type PostActionAction =
-  | { type: EPostActionType.TOGGLE_LIKE; id: number }
-  | { type: EPostActionType.TOGGLE_BOOKMARK; id: number };
+  | { type: EPostActionType.TOGGLE_LIKE; payload: number }
+  | { type: EPostActionType.TOGGLE_BOOKMARK; payload: number }
+  | {
+      type: EPostActionType.INIT_FROM_STORAGE;
+      payload: ActionPayload;
+    };
 
 export type PostActionContextType = PostActionState & {
   toggleLike: (id: number) => void;
@@ -15,4 +23,5 @@ export type PostActionContextType = PostActionState & {
 export enum EPostActionType {
   TOGGLE_LIKE = "TOGGLE_LIKE",
   TOGGLE_BOOKMARK = "TOGGLE_BOOKMARK",
+  INIT_FROM_STORAGE = "INIT_FROM_STORAGE",
 }
