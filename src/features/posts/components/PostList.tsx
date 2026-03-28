@@ -5,7 +5,6 @@ import { Pagination, SearchInput } from "@/components";
 import { PostActionProvider } from "@/context/postAction/PostActionContext";
 import { usePosts } from "../hooks/usePosts";
 import { Post } from "@/types";
-import { useEffect } from "react";
 
 type TProps = {
   initialData: Post[];
@@ -21,12 +20,12 @@ export default function PostList({ initialData, param }: TProps) {
 
   return (
     <div>
-      <div className="flex justify-end mb-6">
+      <div className="flex justify-end mb-4">
         <SearchInput paramName="q" placeholder="Search product..." />
       </div>
 
       <PostActionProvider>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-3">
           {isLoading
             ? Array.from({ length: param.pageSize }).map((_, i) => (
                 <div
