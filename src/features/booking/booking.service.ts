@@ -1,11 +1,18 @@
 import { graphqlFetch } from "@/lib/graphqlFetch";
 import { GET_BOOKINGS } from "./booking.query";
+import { IBooking } from "./types";
 
-export const getBookings = async (filters: any): Promise<any[]> => {
-  const data = await graphqlFetch<any, { bookings: any[] }>({
-    query: GET_BOOKINGS,
-    variables: { filter: filters },
-  });
+export const getBookings = async (
+  filters: any,
+): Promise<IBooking[] | undefined> => {
+  try {
+    const response = await graphqlFetch<any, { list: IBooking[] }>({
+      query: GET_BOOKINGS,
+      variables: { filter: filters },
+    });
 
-  return data.bookings;
+    return response.list;
+  } catch (error) {
+    return undefined;
+  }
 };
