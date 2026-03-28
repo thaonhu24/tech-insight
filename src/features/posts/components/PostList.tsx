@@ -1,33 +1,52 @@
 "use client";
 
-import { IPaginationParams, Post } from "@/types";
 import PostCard from "./PostCard";
 import { Pagination, SearchInput } from "@/components";
 import { PostActionProvider } from "@/context/postAction/PostActionContext";
+import { usePosts } from "../hooks/usePosts";
+import { Post } from "@/types";
 
-interface Props {
-  posts: Post[];
-  param: IPaginationParams;
-}
+type TProps = {
+  initialData: Post[];
+  param: {
+    totalCount: number;
+    page: number;
+    pageSize: number;
+  };
+};
 
-export default function PostList({ posts, param }: Props) {
-  const { totalCount, page, pageSize } = param;
+export default function PostList({ initialData, param }: TProps) {
+  const { posts, isLoading, isFetching, data } = usePosts(initialData, param);
+
   return (
     <div>
-      <div className="flex justify-end mb-6">
-        <SearchInput paramName="search" placeholder="Search product..." />
+      <div className="flex justify-end mb-4">
+        <SearchInput paramName="q" placeholder="Search product..." />
       </div>
 
-      <div className="grid gap-6 md:grid-cols-3">
-        <PostActionProvider>
-          {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </PostActionProvider>
-      </div>
+      <PostActionProvider>
+        <div className="grid gap-4 md:grid-cols-3">
+          {isLoading
+            ? Array.from({ length: param.pageSize }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-40 bg-gray-200 animate-pulse rounded"
+                />
+              ))
+            : posts.map((post) => <PostCard key={post.id} post={post} />)}
+        </div>
+      </PostActionProvider>
+
+      {isFetching && !isLoading && (
+        <div className="text-center mt-2 text-sm text-gray-500">Loading...</div>
+      )}
 
       <div className="flex gap-2 justify-center mt-8">
-        <Pagination currentPage={page} total={totalCount} limit={pageSize} />
+        <Pagination
+          currentPage={data?.page}
+          total={data?.totalCount}
+          limit={data?.pageSize}
+        />
       </div>
     </div>
   );

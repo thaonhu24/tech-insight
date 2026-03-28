@@ -4,12 +4,16 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { getPageNumbers } from "./method";
 
 type Props = {
-  currentPage: number;
-  total: number;
-  limit: number;
+  currentPage?: number;
+  total?: number;
+  limit?: number;
 };
 
-export default function Pagination({ currentPage, total, limit }: Props) {
+export default function Pagination({
+  currentPage = 1,
+  total = 0,
+  limit = 10,
+}: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const totalPages = Math.ceil(total / limit);
@@ -37,7 +41,7 @@ export default function Pagination({ currentPage, total, limit }: Props) {
             key={page}
             disabled={currentPage === page}
             onClick={() => goToPage(page as number)}
-            className={`w-8 h-8 rounded text-sm font-medium transition-colors
+            className={`w-8 h-8 rounded text-sm font-medium transition-colors cursor-pointer
               ${
                 currentPage === page
                   ? "bg-gray-900 text-white cursor-default"

@@ -21,5 +21,5 @@ export default async function Page({ searchParams }: Props) {
     pageSize: response?.pageSize ?? 6,
   };
 
-  return <PostList posts={response?.data || []} param={param} />;
+  return <PostList initialData={response?.data || []} param={param} />;
 }
