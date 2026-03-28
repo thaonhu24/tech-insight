@@ -99,9 +99,10 @@ The project follows a feature-based structure to ensure scalability and separati
 
 ---
 
-## 🔄 Phase 4 – Forms & Validation
+## 🔄 Phase 4 – GraphQL & Forms
 
-- [ ] Create post page
+- [x] Setup basic GraphQL
+- [ ] Implement Booking Table
 - [ ] Integrate React Hook Form
 - [ ] Add validation rules
 - [ ] Simulate async submission
